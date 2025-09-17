@@ -8,7 +8,7 @@ class Servidor:
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # ipv4 tcp
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
         self.socket.bind((HOST, PORT)) #0.0.0.0 7654
-        self.socket.listen(5)
+        self.socket.listen()
         self.socket.settimeout(600)
         self.executando = True
         print('Servidor esperando por conexão...')
