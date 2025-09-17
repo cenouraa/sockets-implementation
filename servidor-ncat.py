@@ -87,7 +87,7 @@ class Servidor:
         while conectado:
             try:
                 # fica wait esperando mensagens novas dos clientes
-                cliente_mensagem = cliente_socket.recv(1024).decode().strip()
+                cliente_mensagem = cliente_socket.recv(1024).decode()
             except:
                 break
             # se não tiver mensagem, a conexão foi fechada
@@ -95,7 +95,7 @@ class Servidor:
                 break
 
             # 'sair' para fechar o chat
-            if cliente_mensagem.lower() == "sair":
+            if cliente_mensagem.lower().strip() == "sair":
                 self.broadcast_mensagem(cliente_socket, f'{cliente_nome} saiu do chat!\n')
                 if cliente in Servidor.Clientes:
                     Servidor.Clientes.remove(cliente)
